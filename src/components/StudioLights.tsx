@@ -1,8 +1,10 @@
+// ThreeJS
 import { Environment, Lightformer } from "@react-three/drei";
 
 const StudioLights = () => {
   return (
     <group name="lights">
+      {/* Light Former environment */}
       <Environment resolution={256}>
         <group>
           <Lightformer
@@ -21,6 +23,7 @@ const StudioLights = () => {
           />
         </group>
       </Environment>
+      {/* Spot Light */}
       <spotLight
         position={[-2, 10, 5]}
         angle={0.15}

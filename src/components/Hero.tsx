@@ -1,3 +1,4 @@
+// react imports
 import { useEffect, useRef } from "react";
 
 const Hero = () => {
@@ -14,7 +15,14 @@ const Hero = () => {
         <img src="/title.png" alt="MacBook Title" />
       </div>
 
-      <video src="/videos/hero.mp4" autoPlay muted playsInline ref={videoRef} />
+      <video
+        src="/videos/hero.mp4"
+        autoPlay
+        muted
+        playsInline
+        controls={false}
+        ref={videoRef}
+      />
 
       <button>Buy</button>
 

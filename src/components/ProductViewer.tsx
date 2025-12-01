@@ -1,11 +1,19 @@
-import clsx from "clsx";
-import useMacbookStore from "../store";
-import { Canvas } from "@react-three/fiber";
-import { Box, OrbitControls } from "@react-three/drei";
+// components
 import MacbookModel14 from "./models/Macbook-14";
 import StudioLights from "./StudioLights";
 
+// state management store imports
+import useMacbookStore from "../store";
+
+// css styling
+import clsx from "clsx";
+
+// ThreeJS
+import { Canvas } from "@react-three/fiber";
+import { Box, OrbitControls } from "@react-three/drei";
+
 const ProductViewer = () => {
+  // state management store
   const { color, scale, setColor, setScale } = useMacbookStore();
 
   return (
@@ -16,6 +24,7 @@ const ProductViewer = () => {
           MacBookPro 16" in {color === "#adb5bd" ? "Silver" : "Space Black"}{" "}
         </p>
 
+        {/* controls ie color, size */}
         <div className="flex flex-center gap-5 mt-5">
           <div className="color-control">
             <div
@@ -59,6 +68,8 @@ const ProductViewer = () => {
         </div>
       </div>
       <p className="text-white text-4xl">Render Canvas</p>
+
+      {/* 3D model rendering */}
       <Canvas
         id="canvas"
         camera={{ position: [0, 2, 5], fov: 50, near: 0.1, far: 100 }}

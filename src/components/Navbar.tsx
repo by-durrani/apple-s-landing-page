@@ -1,3 +1,4 @@
+// code splitting imports
 import { navLinks } from "../constants";
 
 const Navbar = () => {
