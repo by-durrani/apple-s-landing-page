@@ -8,11 +8,37 @@ Source: https://sketchfab.com/3d-models/macbook-pro-m3-16-inch-2024-8e34fc2b3031
 Title: macbook pro M3 16 inch 2024
 */
 
+// react imports
+import { useEffect } from "react";
+
 // ThreeJS
 import { useGLTF, useTexture } from "@react-three/drei";
+import { Color } from "three";
+
+// local imports
+import useMacbookStore from "../../store";
+import { noChangeParts } from "../../constants";
 
 export default function MacbookModel14(props) {
-  const { nodes, materials } = useGLTF("/models/macbook-14-transformed.glb");
+  // global color state
+  const { color } = useMacbookStore();
+
+  const { nodes, materials, scene } = useGLTF(
+    "/models/macbook-14-transformed.glb"
+  );
+
+  // change scene color
+  useEffect(() => {
+    scene.traverse((child) => {
+      if (child.isMesh) {
+        // change color only if the part name is NOT noChangeParts
+        if (!noChangeParts.includes(child.name)) {
+          child.material.color = new Color(color);
+        }
+      }
+    });
+  }, [color, scene]);
+
   const texture = useTexture("/screen.png");
   return (
     <group {...props} dispose={null}>

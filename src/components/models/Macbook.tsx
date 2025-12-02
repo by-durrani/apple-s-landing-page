@@ -11,7 +11,7 @@ Title: macbook pro M3 16 inch 2024
 // ThreeJS
 import { useGLTF } from "@react-three/drei";
 
-export function Model(props) {
+export default function Macbook(props) {
   const { nodes, materials } = useGLTF("/hooks/macbook-transformed.glb");
   return (
     <group {...props} dispose={null}>
