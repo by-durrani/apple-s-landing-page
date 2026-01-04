@@ -13,7 +13,7 @@ import { useEffect } from "react";
 
 // ThreeJS
 import { useGLTF, useTexture } from "@react-three/drei";
-import { Color } from "three";
+import { Color, SRGBColorSpace } from "three";
 
 // local imports
 import useMacbookStore from "../../store";
@@ -39,7 +39,11 @@ export default function MacbookModel14(props) {
     });
   }, [color, scene]);
 
+  // textures for screen img for better quality
   const texture = useTexture("/screen.png");
+  texture.colorSpace = SRGBColorSpace;
+  texture.needsUpdate = true;
+
   return (
     <group {...props} dispose={null}>
       <mesh
@@ -129,7 +133,7 @@ export default function MacbookModel14(props) {
       />
       <mesh
         geometry={nodes.Object_123.geometry}
-        material={materials.sfCQkHOWyrsLmor}
+        // material={materials.sfCQkHOWyrsLmor}
         rotation={[Math.PI / 2, 0, 0]}
       >
         <meshBasicMaterial map={texture} />
