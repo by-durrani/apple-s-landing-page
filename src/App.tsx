@@ -5,7 +5,8 @@ import ProductViewer from "./components/ProductViewer";
 
 // gsap
 import gsap from "gsap";
-import { ScrollTrigger, SplitText } from "gsap/all";
+import { ScrollTrigger } from "gsap/all";
+import Showcase from "./components/Showcase";
 
 // registering the gsap plugins
 gsap.registerPlugin(ScrollTrigger);
@@ -16,6 +17,7 @@ const App = () => {
       <Navbar />
       <Hero />
       <ProductViewer />
+      <Showcase />
     </div>
   );
 };
